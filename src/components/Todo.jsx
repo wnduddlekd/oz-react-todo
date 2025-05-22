@@ -4,7 +4,7 @@ export default function Todo({ todo, setTodoList }) {
   const [inputValue, setInputValue] = useState("");
   const [showInput, setShowInput] = useState(false);
 
-  const handleToggle = () => {
+  const handleClick = () => {
     if (showInput) {
       if (inputValue) {
         setTodoList((prev) =>
@@ -21,9 +21,20 @@ export default function Todo({ todo, setTodoList }) {
       setShowInput(true);
     }
   };
+
   return (
     <li>
-      <input type="checkbox" />
+      <input
+        type="checkbox"
+        checked={todo.checked}
+        onChange={() =>
+          setTodoList((prev) =>
+            prev.map((el) =>
+              el.id === todo.id ? { ...el, checked: !el.checked } : el
+            )
+          )
+        }
+      />
       {todo.content}
       {showInput && (
         <input
@@ -32,7 +43,7 @@ export default function Todo({ todo, setTodoList }) {
           placeholder="수정할 Todo List 입력"
         />
       )}
-      <button onClick={handleToggle}>수정</button>
+      <button onClick={handleClick}>수정</button>
       <button
         onClick={() => {
           setTodoList((prev) => {

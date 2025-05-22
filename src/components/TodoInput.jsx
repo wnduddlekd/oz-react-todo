@@ -11,7 +11,11 @@ export default function TodoInput({ todoList, setTodoList }) {
       />
       <button
         onClick={() => {
-          const newTodo = { id: Number(new Date()), content: inputValue };
+          const newTodo = {
+            id: Number(new Date()),
+            content: inputValue,
+            checked: false,
+          };
           const newTodoList = [...todoList, newTodo];
           setTodoList(newTodoList);
           setInputValue("");
