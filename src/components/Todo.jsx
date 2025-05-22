@@ -53,9 +53,12 @@ export default function Todo({ todo, setTodoList }) {
         <button
           id="remove-button"
           onClick={() => {
-            setTodoList((prev) => {
-              return prev.filter((el) => el.id !== todo.id);
-            });
+            const confirmDelete = window.confirm("정말 지우시겠습니까?");
+            if (confirmDelete) {
+              setTodoList((prev) => {
+                return prev.filter((el) => el.id !== todo.id);
+              });
+            }
           }}
         >
           <b>삭제</b>
