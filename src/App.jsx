@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Header from "./components/Header";
 import TodoList from "./components/TodoList";
 import TodoInput from "./components/TodoInput";
 
@@ -12,6 +13,7 @@ export default function App() {
 
   return (
     <>
+      <Header></Header>
       <TodoList todoList={todoList} setTodoList={setTodoList} />
       <hr />
       <TodoInput todoList={todoList} setTodoList={setTodoList} />
