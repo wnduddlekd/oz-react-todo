@@ -15,7 +15,6 @@ export default function App() {
     <>
       <Header></Header>
       <TodoList todoList={todoList} setTodoList={setTodoList} />
-      <hr />
       <TodoInput todoList={todoList} setTodoList={setTodoList} />
     </>
   );

@@ -5,11 +5,14 @@ export default function TodoInput({ todoList, setTodoList }) {
 
   return (
     <>
+      add todo
       <input
+        id="add-input"
         value={inputValue}
         onChange={(event) => setInputValue(event.target.value)}
       />
       <button
+        id="input-button"
         onClick={() => {
           const newTodo = {
             id: Number(new Date()),
@@ -21,7 +24,7 @@ export default function TodoInput({ todoList, setTodoList }) {
           setInputValue("");
         }}
       >
-        추가하기
+        <b>추가하기</b>
       </button>
     </>
   );

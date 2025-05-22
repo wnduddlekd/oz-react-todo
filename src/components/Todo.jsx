@@ -24,35 +24,43 @@ export default function Todo({ todo, setTodoList }) {
 
   return (
     <li>
-      <input
-        type="checkbox"
-        checked={todo.checked}
-        onChange={() =>
-          setTodoList((prev) =>
-            prev.map((el) =>
-              el.id === todo.id ? { ...el, checked: !el.checked } : el
-            )
-          )
-        }
-      />
-      {todo.content}
-      {showInput && (
+      <div className="rabel">
         <input
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          placeholder="수정할 Todo List 입력"
+          type="checkbox"
+          checked={todo.checked}
+          onChange={() =>
+            setTodoList((prev) =>
+              prev.map((el) =>
+                el.id === todo.id ? { ...el, checked: !el.checked } : el
+              )
+            )
+          }
         />
-      )}
-      <button onClick={handleClick}>수정</button>
-      <button
-        onClick={() => {
-          setTodoList((prev) => {
-            return prev.filter((el) => el.id !== todo.id);
-          });
-        }}
-      >
-        삭제
-      </button>
+        {todo.content}
+        {showInput && (
+          <input
+            id="change-input"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="수정할 Todo List 입력"
+          />
+        )}
+      </div>
+      <div className="buttons">
+        <button id="change-button" onClick={handleClick}>
+          <b>수정</b>
+        </button>
+        <button
+          id="remove-button"
+          onClick={() => {
+            setTodoList((prev) => {
+              return prev.filter((el) => el.id !== todo.id);
+            });
+          }}
+        >
+          <b>삭제</b>
+        </button>
+      </div>
     </li>
   );
 }
