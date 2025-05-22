@@ -14,14 +14,16 @@ export default function TodoInput({ todoList, setTodoList }) {
       <button
         id="input-button"
         onClick={() => {
-          const newTodo = {
-            id: Number(new Date()),
-            content: inputValue,
-            checked: false,
-          };
-          const newTodoList = [...todoList, newTodo];
-          setTodoList(newTodoList);
-          setInputValue("");
+          if (inputValue) {
+            const newTodo = {
+              id: Number(new Date()),
+              content: inputValue,
+              checked: false,
+            };
+            const newTodoList = [...todoList, newTodo];
+            setTodoList(newTodoList);
+            setInputValue("");
+          }
         }}
       >
         <b>추가하기</b>
